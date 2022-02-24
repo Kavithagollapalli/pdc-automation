@@ -1,0 +1,65 @@
+<app-pdc-header></app-pdc-header>
+<div>
+    <i class="bi bi-arrow-left-circle-fill back" title="Back" (click)="clickBack()"></i>
+
+</div>
+<div class="alert alert-success alert-dismissible fade show addinvalid" 
+role="alert" *ngIf="isInvalid">Product has been added Successully
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+</div>
+    <div class="container">
+        <h4 style="margin-top: 30px;">Add Product</h4><br />
+        <form [formGroup]="pdcaddProduct" >
+            <div class="card inpfeilds">
+                <div class="card-body">
+                    <div class="input-group flex-nowrap">
+                        <label class="product" style="margin-right: 50px;" >Serial no. :</label>
+                        <input type="text" class="form-control" placeholder="S.no." aria-label="number"
+                            aria-describedby="addon-wrapping" formControlName="number"  
+                            [(ngModel)]="productModal.id">
+                    </div>
+                    <div>
+                        <span *ngIf="isSave&&pdcaddProduct?.controls?.number?.errors?.required" 
+                        style="color:red;margin-left: 140px;"> Serial number required</span>
+                             <span *ngIf="isSave&&pdcaddProduct?.controls?.number?.errors?.pattern" 
+                             style="color:red;margin-left: 140px;"> Enter Only numerics</span>
+                    </div><br />
+                    <div class="input-group flex-nowrap">
+                        <label class="product" style="margin-right: 18px;">Product Name: </label>
+                        <input type="text" class="form-control" placeholder="Product Name" aria-label="addproduct"
+                            aria-describedby="addon-wrapping" formControlName="productname" 
+                            [(ngModel)]="productModal.name" >
+                        </div>
+                            <div>
+                                <span *ngIf="isSave&&pdcaddProduct?.controls?.productname?.errors?.required" 
+                                style="color:red;margin-left: 140px;">Product name required</span>
+                                <span *ngIf="isSave&&pdcaddProduct?.controls?.productname?.errors?.pattern"
+                                style="color:red;margin-left: 140px;">Enter Only Characters</span>
+                            </div>
+                    <br />
+                    <div class="input-group flex-nowrap">
+                        <label class="product" style="margin-right: 25px;">Product Price: </label>
+                        <input type="text" class="form-control" placeholder="Price" aria-label="number"
+                            aria-describedby="addon-wrapping" formControlName="price" [(ngModel)]="productModal.price">
+                    </div>
+                    <div>
+                        <span *ngIf="isSave&&pdcaddProduct?.controls?.price?.errors?.required"
+                        style="color:red;margin-left: 140px;">Price is required</span>
+                        <span *ngIf="isSave&&pdcaddProduct?.controls?.price?.errors?.pattern" 
+                             style="color:red;margin-left: 140px;"> Enter Only numerics</span>
+                    </div>
+                    <br />
+                </div>
+                
+                <div class="buttonlist">
+                    
+                      <button type="button" class="btn btn-info " 
+                      style="width: 20%;;margin-left: 50px;" (click)="onSave()">Save</button>
+                      <button type="button"  class="btn btn-secondary " 
+                      style="width:20% ;margin-left: 50px;" (click)="resetForm()">Reset</button>
+                    
+                 </div>
+            </div>
+        </form>
+    </div>
+ 

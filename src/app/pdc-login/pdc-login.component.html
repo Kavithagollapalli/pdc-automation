@@ -1,0 +1,45 @@
+<div class="login-bgd">
+    <div class="alert alert-danger alert-dismissible fade show invalid" 
+    role="alert" *ngIf="isInvalid">Invalid Username or Invalid Password
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div><br />
+    <form [formGroup]="pdcLogin" (ngSubmit)="onSubmit()">
+        <div class="card logincard" background-image= "assets/image/bg.jpg">
+          <div class="card-body">
+                <h2 class="log">Log In</h2>
+                
+            </div>
+            <div class="inputfield">
+                <div class="input-group flex-nowrap">
+                    <input type="text" class="form-control" placeholder="User Name" aria-label="Userame"
+                        aria-describedby="addon-wrapping" formControlName="username"
+                        [(ngModel)]="loginModal.username" />
+                </div>
+                <div>
+                    <span *ngIf="isSubmit&&pdcLogin?.controls?.username?.errors?.required" 
+                    style="color: yellow;">User Name Required</span>
+                    <span *ngIf="isSubmit&&pdcLogin?.controls?.username?.errors?.maxlength" 
+                    style="color: yellow;">Maximum length 30 characters</span>
+                    <span *ngIf="isSubmit&&pdcLogin?.controls?.username?.errors?.minlength&&
+                !pdcLogin?.controls?.username?.errors?.maxlength" style="color: yellow;">
+                Minimum length 5 characters</span>
+                    <span *ngIf="isSubmit&&pdcLogin?.controls?.username?.errors?.pattern" 
+                    style="color:yellow;">Numbers not Allowed</span>
+                </div><br />
+                <div class="input-group flex-nowrap">
+                    <input type="password" class="form-control" placeholder="Password" aria-label="Userame"
+                        aria-describedby="addon-wrapping" formControlName="password" 
+                        [(ngModel)]="loginModal.password">
+                </div>
+                <div>
+                    <span *ngIf="isSubmit&&pdcLogin?.controls?.password?.errors?.required" 
+                    style="color: yellow;">Password Required</span>
+                </div>
+            </div><br />
+
+            <div class="row justify-content-center">
+                <button type="submit" class="btn btn-primary butlog">LogIn</button>
+            </div>
+        </div>
+    </form>
+</div>

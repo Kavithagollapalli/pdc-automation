@@ -1,0 +1,38 @@
+<header class="pdcheader">
+    <div class="clearfloat" >
+      <h3 class="header" style="font-weight: bold;">  
+        <img src="/assets/image/pdc.png" alt="PDC Logo" style="width: 18%;">
+      </h3>
+      <h2 style="float: left;padding-top: 10px;">PDC AUTOMATION</h2>
+      <div *ngIf="isLogin" class="header1">
+        <h5 style="color: rgb(8, 8, 8);text-align: right;margin-top: 20px;">
+          <i class="bi bi-person-circle" style="font-size: 20px;"></i>&nbsp;&nbsp;{{userName}} &nbsp;
+         <span>
+           <i class="fa fa-power-off" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        style="font-size:25px;cursor: pointer;margin-right: 30px;padding-bottom: 10px;color: red;"
+         title="LogOut"></i>
+      </span>
+    </h5>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" 
+    aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Log Out</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="font-weight: bold; color: red;">
+              Are sure you want to LogOut.
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="logoutbtn" data-bs-dismiss="modal" 
+              style="background-color: rgb(252, 170, 170);">No</button>
+              <button type="button" class="logoutbtn" (click)="doLogout()" 
+              style="background-color: rgb(172, 168, 168);">Yes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</header>

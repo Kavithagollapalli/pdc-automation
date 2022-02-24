@@ -1,0 +1,30 @@
+.inpfeilds{
+    width: 60%;
+}
+.product{
+    
+    font-size:18px !important;
+}
+.buttonstyle {
+    width: 30%;
+}
+@media screen and (min-width: 480px) {
+    #leftsidebar {width: 200px; float: left;}
+    #main {margin-left: 216px;}
+}
+.buttonlist{
+    float: left;
+     margin-left: 150px;
+    margin-bottom: 20px;  
+}
+.addinvalid{
+    width:45%;
+   
+    text-align: center;
+    margin-left: 274px;
+  }
+  .back{
+      font-size: 35px;
+      margin-left: 60px;
+      cursor: pointer;
+  }

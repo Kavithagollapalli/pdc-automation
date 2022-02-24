@@ -1,0 +1,35 @@
+.pdcheader {
+     color: rgb(10, 10, 10);
+     text-align: center;
+     background-color: rgb(73, 245, 111);
+    
+}
+* {
+     box-sizing: border-box;
+   }
+.clearfloat::after {
+     content: "";
+     clear: both;
+     display: table
+}
+/* .img{
+     float: left;
+     margin-left: 5px;   
+     margin-left: 10px; 
+} */
+.header {
+     float:left;
+     margin-left: -240px;
+       
+   }
+   .header1 {
+     float:right;
+       
+   }
+   .logoutbtn{
+     border: 5px;
+     border-radius: 5px;
+     width: 20%;
+     height: 45px;
+   }
+ 

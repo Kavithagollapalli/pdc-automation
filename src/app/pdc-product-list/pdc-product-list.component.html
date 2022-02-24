@@ -1,0 +1,85 @@
+<app-pdc-header></app-pdc-header>
+<div class="container">
+    <div>
+        <h3 style="margin-top: 30px;">Product List</h3>
+        <div style="margin-top: 20px;">
+        <button type="button" class="btn btn-outline-info" (click)="addProductList()"
+        style="width: 10%;border-radius: 20px; color: rgb(3, 3, 3);" >
+          <i class="bi bi-plus-circle-fill" style="font-size: 20px;color: black;" >
+          </i>&nbsp; Add </button>
+          
+        <div class="input-group " style="width: 35%; float: right;">
+      <input type="text" class="form-control" placeholder="Search Product..." aria-label="searchValue " 
+      aria-describedby="addon-wrapping" (keyup)="searchKeyup($event)" >
+    </div>
+    </div>
+    <br/>
+
+    <table class="table table-bordered" >
+        <thead>
+          <tr>
+            <th scope="col" class="col-1">SNo.</th>
+            <th scope="col" class="col-5">Name</th>
+            <th scope="col" class="col-3">Price</th>
+            <th scope="col" class="col-2">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let x of productList">
+            
+            <td scope="row"  #id> {{x.id}} </td>
+            <td>{{x.name}}</td>
+            <td>{{x.price}}</td>
+            <td>
+              <i  class="bi bi-eye-fill actionicon " title="View Product" (click)="deleteProduct(x.id)"
+              style="color: darkgreen;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#staticBackdrop1"></i>&nbsp;&nbsp;&nbsp;
+           
+              <i title="Update Product" class="bi bi-pen actionicon" (click)="editProduct(x.id)"
+              style="color: blue;cursor: pointer;" ></i>&nbsp;&nbsp;&nbsp;
+              <i title="Delete Product" class="bi bi-trash actionicon" (click)="deleteProduct(x.id)"
+              style="color: red;cursor: pointer;" data-bs-toggle="modal" data-bs-target="#staticBackdrop"></i>
+            </td>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" 
+            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body" style="font-weight: bold; color: red;">
+                   Are you sure want delete this product
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" 
+                    (click)="isDelete(id)">Yes</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">No</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tr>
+              <tr *ngIf="productList.length==0" >
+                <td [attr.colspan]="4"><p style="color: red;text-align:center;font-size: 20px;">
+                  Not found in records</p></td>
+              </tr>
+              <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" 
+              tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">Product Details</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" style="font-weight: bold;">
+                      
+                        <app-pdc-product-details [inputId]="deleteProductId"></app-pdc-product-details>
+                    </div>
+                  
+                  </div>
+                </div> 
+              </div>       
+        </tbody>
+      </table>
+
+</div>
